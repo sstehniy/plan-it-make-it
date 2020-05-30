@@ -27,7 +27,7 @@ router.get("/:id/verify", async (req, res, next) => {
     if (verificationToken + "" === token + "") {
       user.emailVerified = true;
       await user.save();
-      res.status(200).redirect(`${req.rootUrl}`);
+      res.status(200).redirect(`http://plan-it-make-it.herokuapp.com/`);
     }
   } catch (error) {
     console.log(error);
