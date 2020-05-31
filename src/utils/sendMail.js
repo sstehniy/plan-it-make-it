@@ -18,7 +18,7 @@ const sendMail = user => {
     html: `
       <p style="font-size: 16px;
       font-family: sans-serif;
-      color: black">Hi, ${user.name}, please <a href="http://localhost:5001/api/user/${user.id}/verify?token=${user.verificationToken}">click here</a> to verify your email and activate your new account on Plan-It-Make-It</p>
+      color: black">Hi, ${user.name}, please <a href="https://plan-it-make-it.herokuapp.com//api/user/${user.id}/verify?token=${user.verificationToken}">click here</a> to verify your email and activate your new account on Plan-It-Make-It</p>
     `,
   };
   return new Promise((resolve, reject) => {
