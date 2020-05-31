@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectToDB = require("./db.config");
@@ -35,9 +36,12 @@ app.use("/api/user", userRouter);
 app.use("/api/folders", folderRouter);
 app.use("/api/invitation", invitationRouter);
 
-// * Unknown endpoint
-app.use((_req, res) => {
-  res.status(404).json({ error: "Not found" });
+app.get("/*", function (_req, res) {
+  res.sendFile(path.join(__dirname, "../build/index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 // * Error Handling middleware
