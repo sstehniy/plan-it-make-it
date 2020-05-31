@@ -90,7 +90,7 @@ router.get("/:id/invitations", async (req, res, next) => {
     };
     res.status(200).json(resData);
   } catch (error) {
-    console.log(error);
+    next({ status: 500, message: "Failed to fetch resource" });
   }
 });
 
