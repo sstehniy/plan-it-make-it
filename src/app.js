@@ -28,7 +28,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static("build"));
 app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/user", userRouter);
