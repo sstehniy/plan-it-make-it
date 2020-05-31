@@ -27,7 +27,7 @@ router.get("/:id/verify", async (req, res, next) => {
     if (verificationToken + "" === token + "") {
       user.emailVerified = true;
       await user.save();
-      res.status(200).redirect(`http://plan-it-make-it.herokuapp.com/`);
+      res.status(200).redirect(`http://localhost:3000/`);
     }
   } catch (error) {
     console.log(error);
@@ -41,7 +41,7 @@ router.post("/:id/resend-verification", async (req, res, next) => {
     const user = await User.findById(id);
     await sendMail(user);
   } catch (error) {
-    next({ status: 500, message: "Error while fetching resource" });
+    return next({ status: 500, message: "Error while fetching resource" });
   }
   res.status(200).json({ message: "Email resent succesfully" });
 });

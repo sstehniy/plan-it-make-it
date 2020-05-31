@@ -9,10 +9,7 @@ router.post("/", async (req, res, next) => {
   const { name, username, email, password } = body;
 
   const passwordHash = await bcrypt.hash(password, 10);
-  const verificationToken = await bcrypt.hash(
-    process.env.VERIFICATION_SECRET,
-    10,
-  );
+  const verificationToken = await bcrypt.hash(process.env.VERIFICATION_SECRET, 10);
 
   const newUser = User({
     name,
@@ -23,7 +20,8 @@ router.post("/", async (req, res, next) => {
   });
   try {
     const savedUser = await newUser.save();
-    await sendMail(savedUser);
+    const result = await sendMail(savedUser);
+    console.log(result);
     res.status(200).json(savedUser);
   } catch (error) {
     next({ status: 409, message: "Registration error", data: error.errors });
