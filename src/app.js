@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectToDB = require("./db.config");
@@ -23,11 +24,7 @@ morganBody(app, {
   theme: "lightened",
 });
 
-app.use((req, res, next) => {
-  req.rootUrl = req.protocol + "://" + req.host + ":3000";
-  next();
-});
-
+app.use(express.static(path.join(__dirname, "../build")));
 app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/user", userRouter);
@@ -35,15 +32,12 @@ app.use("/api/folders", folderRouter);
 app.use("/api/invitation", invitationRouter);
 
 // * Unknown endpoint
-app.use((_req, res) => {
-  res.status(404).json({ error: "Not found" });
-});
-
-// * Error Handling middleware
-app.use((error, _req, res, _) => {
-  return error.data
-    ? res.status(error.status).json({ message: error.message, data: error.data })
-    : res.status(error.status).json({ message: error.message });
+app.use("/*", function (_req, res) {
+  res.sendFile(path.join(__dirname, "build/index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 new Promise((resolve, _) => {
