@@ -24,19 +24,15 @@ morganBody(app, {
   theme: "lightened",
 });
 
-app.use((req, res, next) => {
-  req.rootUrl = req.protocol + "://" + req.host + ":3000";
-  next();
-});
-
-app.use(express.static("build"));
+app.use(express.static(path.join(__dirname, "../build")));
 app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/user", userRouter);
 app.use("/api/folders", folderRouter);
 app.use("/api/invitation", invitationRouter);
 
-app.get("/*", function (_req, res) {
+// * Unknown endpoint
+app.use("/*", function (_req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"), function (err) {
     if (err) {
       res.status(500).send(err);
