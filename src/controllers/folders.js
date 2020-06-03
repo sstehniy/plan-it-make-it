@@ -57,6 +57,7 @@ router.post("/", async (req, res, next) => {
   const folder = new Folder({
     title: id,
     users: [user._id],
+    updatedBy: user._id,
   });
   try {
     const savedFolder = await folder.save();

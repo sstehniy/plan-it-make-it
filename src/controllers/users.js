@@ -18,16 +18,19 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/verify", async (req, res, next) => {
   const { id } = req.params;
   const { token } = req.query;
+  console.log(id);
   console.log(token);
   if (!id || !token) next({ status: 403, message: "Failed to verify email" });
   try {
     const user = await User.findById(id);
+    console.log(user);
     if (!user) next({ status: 403, message: "Failed to verify email" });
     const { verificationToken } = user;
     if (verificationToken + "" === token + "") {
       user.emailVerified = true;
-      await user.save();
-      res.status(200).redirect(`https://plan-it-make-it.herokuapp.com/`);
+      const savedUser = await user.save();
+      console.log("saved user", savedUser);
+      res.status(200).redirect(`http://localhost:3000/`);
     }
   } catch (error) {
     console.log(error);

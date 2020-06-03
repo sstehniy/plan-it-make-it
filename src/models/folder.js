@@ -38,9 +38,12 @@ const folderSchema = new mongoose.Schema(
         ref: "user",
       },
     ],
+    updatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
   },
-
-  { timestamps: true, versionKey: false },
+  { timestamps: true },
 );
 
 folderSchema.plugin(validator);
