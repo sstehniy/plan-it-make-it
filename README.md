@@ -1,15 +1,12 @@
-A fullstack todo-app built using MERN-stack with integration of 3rd-party API's
-
-
-The client code of Plan-It-Make-It bootstrapped with CRA(create-react-app).
+A fullstack todo-app built using MERN-stack.
 
 Libraries used in the project:
 
-React for building reusable UI elements
-Redux for state management
-React-Router for declarative routing in an SPA
-Axios for managing async client-side HTTP requests
-React-Transition-Group and anime.js for animating things
-React-Hook-Form for dynamic form validation
-SASS and styled-components for styling UI components
-Eslint and Prettier for linting and formatting
+- [React](https://reactjs.org/) for building reusable UI elements
+- [Redux](https://redux.js.org/) for state management
+- [React-Router](https://reacttraining.com/react-router/) for declarative routing in an SPA
+- [Axios](https://github.com/axios/axios) for managing async client-side HTTP requests
+- [React-Transition-Group](https://reactcommunity.org/react-transition-group/) and [anime.js](https://animejs.com/) for animating things
+- [React-Hook-Form](https://react-hook-form.com/) for dynamic form validation
+- [SASS](https://sass-lang.com/dart-sass) and [styled-components](https://styled-components.com/) for styling UI components
+- [Eslint](https://eslint.org/) and [Prettier](https://prettier.io/) for linting and formatting
