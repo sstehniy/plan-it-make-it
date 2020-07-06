@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const User = require("../models/user");
 const Folder = require("../models/folder");
 const { validateToken } = require("../utils/validateToken");
@@ -161,10 +161,12 @@ router.post("/:folderId/todos/:todoId/toggle", async (req, res, next) => {
 router.patch("/:folderId/todos/:todoId", async (req, res, next) => {
   const { folderId, todoId } = req.params;
   const { body } = req;
+  console.log("bodyyyyyyyyyy ", body);
   const folder = await Folder.findById(folderId).populate("todos");
+  console.log(folder);
   if (!folder) next({ status: 500, message: "No folder with given ID" });
   const todo = folder.todos.id(todoId);
-
+  console.log("found todooooooo", todo);
   for (const key in body) {
     if ((todo[key] || todo[key] === "") && todo[key] !== body[key]) {
       todo[key] = body[key];
