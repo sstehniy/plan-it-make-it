@@ -20,7 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.15",
     "mongoose-unique-validator": "^2.0.3",
-    "morgan-body": "^2.4.8"
+    "morgan-body": "^2.4.8",
+    "nodemailer": "^6.4.10"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
