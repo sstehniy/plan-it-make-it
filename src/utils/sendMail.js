@@ -1,6 +1,6 @@
 require("dotenv").config();
 const sendGrid = require("@sendgrid/mail");
-sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
+sendGrid.setApiKey(process.env.SENDGRID_KEY);
 // const transporter = nodeMailer.createTransport({
 //   service: "gmail",
 //   host: "smtp.gmail.com",
