@@ -160,11 +160,11 @@ router.post("/:folderId/todos/:todoId/toggle", async (req, res, next) => {
 // * Change the title | description of a single todo
 router.patch("/:folderId/todos/:todoId", async (req, res, next) => {
   const { folderId, todoId } = req.params;
+  console.log(folderId, todoId);
   const { body } = req;
-  console.log("bodyyyyyyyyyy ", body);
   const folder = await Folder.findById(folderId).populate("todos");
-  console.log(folder);
   if (!folder) next({ status: 500, message: "No folder with given ID" });
+  console.log(folder);
   const todo = folder.todos.id(todoId);
   console.log("found todooooooo", todo);
   for (const key in body) {
