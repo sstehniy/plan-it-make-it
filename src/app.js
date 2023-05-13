@@ -61,7 +61,7 @@ new Promise((resolve, _) => {
 
 /* 
   * instructions to run in deployment mod:
-   ! - replace anchor-tag in sendMail html template to https://plan-it-make-it.herokuapp.com/...
+   ! - replace anchor-tag in sendMail html template to https://web-production-35b5.up.railway.app/...
    ! - make sure to add 'app.use(express.static(path.join(__dirname, "../build")))' before all routes middleware applied in app.js
-   ! - change controllers/users.js to redirect to https://plan-it-make-it.herokuapp.com in email verification route
+   ! - change controllers/users.js to redirect to https://web-production-35b5.up.railway.app/ in email verification route
 */

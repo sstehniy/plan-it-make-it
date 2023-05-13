@@ -30,7 +30,7 @@ router.get("/:id/verify", async (req, res, next) => {
       user.emailVerified = true;
       const savedUser = await user.save();
       console.log("saved user", savedUser);
-      res.status(200).redirect(`http://localhost:3000`);
+      res.status(200).redirect(`https://web-production-35b5.up.railway.app/`);
     }
   } catch (error) {
     console.log(error);
